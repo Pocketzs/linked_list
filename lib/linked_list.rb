@@ -6,14 +6,26 @@ class LinkedList
   end
 
   def append(data)
-    @head = Node.new(data)
+    @head ? @head.next_node = Node.new(data) : @head = Node.new(data)
   end
 
   def count
-    1
+    current_node = @head
+    count = 0
+    while current_node
+      count += 1
+      current_node = current_node.next_node
+    end
+    count
   end
 
   def to_string
-    @head.data
+    current_node = @head
+    data = []
+    while current_node
+      data << current_node.data
+      current_node = current_node.next_node
+    end
+    data.join(" ")
   end
 end
