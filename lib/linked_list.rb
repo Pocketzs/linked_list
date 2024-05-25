@@ -9,9 +9,7 @@ class LinkedList
     # @head ? @head.next_node = Node.new(data) : @head = Node.new(data)
     if @head
       current = @head
-      while current.next_node
-        current = current.next_node
-      end
+      current = current.next_node while current.next_node
       current.next_node = Node.new(data)
     else
       @head = Node.new(data)
