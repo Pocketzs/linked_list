@@ -34,11 +34,11 @@ RSpec.describe LinkedList do
       expect(list.head.next_node).to be nil
     end
 
-    it 'can count how many nodes in the list' do
+    it 'counts how many nodes in the list' do
       expect(list.count).to eq(1)
     end
 
-    it 'can generate a string containing data from every node' do
+    it 'generates a string containing data from every node' do
       expect(list.to_string).to eq("doop")
     end
   end
@@ -56,12 +56,32 @@ RSpec.describe LinkedList do
       expect(list.head.next_node.data).to eq("deep")
     end
 
-    it 'should count the number of nodes in the list' do
+    it 'counts the number of nodes in the list' do
       expect(list.count).to eq(2)
     end
 
     it 'generates a string list of all node data' do
       expect(list.to_string).to eq("doop deep")
+    end
+  end
+
+  context "when 3 nodes are appended" do
+    before do
+      list.append("doop")
+      list.append("deep")
+      list.append("blap")
+    end
+
+    it 'appends the last node to the next_node of the second node' do
+      expect(list.head.next_node.next_node.data).to eq("blap")
+    end
+
+    it 'counts the nodes' do
+      expect(list.count).to eq(3)
+    end
+
+    it 'generates a string list of all node data' do
+      expect(list.to_string).to eq("doop deep blap")
     end
   end
 end
