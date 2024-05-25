@@ -6,10 +6,11 @@ class LinkedList
   end
 
   def append(data)
+    new_node = Node.new(data)
     if @head
-      find_tail.next_node = Node.new(data)
+      find_tail.next_node = new_node
     else
-      @head = Node.new(data)
+      @head = new_node
     end
   end
 
@@ -17,6 +18,16 @@ class LinkedList
     new_node = Node.new(data)
     new_node.next_node = @head
     @head = new_node
+  end
+
+  def insert(position, data)
+    new_node = Node.new(data)
+    current = @head
+    (position-1).times do
+      current = current.next_node
+    end
+    new_node.next_node = current.next_node
+    current.next_node = new_node
   end
 
   def find_tail

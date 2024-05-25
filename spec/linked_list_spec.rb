@@ -113,12 +113,35 @@ RSpec.describe LinkedList do
     end
   end
 
-  context 'when a node is inserted into the list' do
-    before do
-      list.append("plop")
-      list.append("suu")
-      list.prepend("dop")
-      list.insert(1, "woo")
+  describe '#insert' do
+    context 'when a node is inserted at position 1 in a list of 3 elements' do
+      before do
+        list.append("plop")
+        list.append("suu")
+        list.prepend("dop")
+        # dop plop suu
+        list.insert(1, "woo")
+        # dop woo plop suu
+      end
+
+      it 'inserts the node at desired position' do
+        expect(list.to_string).to eq("dop woo plop suu")
+      end
+    end
+
+    context 'when a node is inserted at position 2 in a list of 3 elements' do
+      before do
+        list.append("plop")
+        list.append("suu")
+        list.prepend("dop")
+        # dop plop suu
+        list.insert(2, "woo")
+        # dop plop woo suu
+      end
+
+      it 'inserts the node at desired position' do
+        expect(list.to_string).to eq("dop plop woo suu")
+      end
     end
   end
 end
