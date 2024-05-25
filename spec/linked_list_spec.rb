@@ -84,4 +84,16 @@ RSpec.describe LinkedList do
       expect(list.to_string).to eq("doop deep blap")
     end
   end
+
+  describe '#find_tail' do
+    before do
+      list.append("doop")
+      list.append("deep")
+      list.append("blap")
+    end
+
+    it 'returns the last defined node in a list' do
+      expect(list.find_tail.data).to eq("blap")
+    end
+  end
 end

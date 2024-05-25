@@ -6,15 +6,17 @@ class LinkedList
   end
 
   def append(data)
-    # @head ? @head.next_node = Node.new(data) : @head = Node.new(data)
     if @head
-      current = @head
-      current = current.next_node while current.next_node
-      current.next_node = Node.new(data)
+      find_tail.next_node = Node.new(data)
     else
       @head = Node.new(data)
     end
-    
+  end
+
+  def find_tail
+    current = @head
+    current = current.next_node while current.next_node
+    current
   end
 
   def count
