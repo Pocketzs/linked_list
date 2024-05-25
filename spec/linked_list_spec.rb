@@ -96,4 +96,29 @@ RSpec.describe LinkedList do
       expect(list.find_tail.data).to eq("blap")
     end
   end
+
+  context 'when a node is prepended to the list' do
+    before do
+      list.append("plop")
+      list.append("suu")
+      list.prepend("dop")
+    end
+
+    it 'adds the new node to the front of the list' do
+      expect(list.to_string).to eq("dop plop suu")
+    end
+
+    it 'counts number of nodes' do
+      expect(list.count).to eq(3)
+    end
+  end
+
+  context 'when a node is inserted into the list' do
+    before do
+      list.append("plop")
+      list.append("suu")
+      list.prepend("dop")
+      list.insert(1, "woo")
+    end
+  end
 end
