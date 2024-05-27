@@ -159,5 +159,34 @@ RSpec.describe LinkedList do
       end
     end
     
+    context 'when a node is inserted at position 3 in a list of 3 elements' do
+      before do
+        list.append("plop")
+        list.append("suu")
+        list.prepend("dop")
+        # dop plop suu
+        list.insert(3, "woo")
+        # dop plop suu woo
+      end
+
+      it 'appends the node' do
+        expect(list.to_string).to eq("dop plop suu woo")
+      end
+    end
+
+    context 'when a node is inserted at position greater than length of list' do
+      before do
+        list.append("plop")
+        list.append("suu")
+        list.prepend("dop")
+        # dop plop suu
+        list.insert(4, "woo")
+        # dop plop suu woo
+      end
+
+      it 'appends the node' do
+        expect(list.to_string).to eq("dop plop suu woo")
+      end
+    end
   end
 end
