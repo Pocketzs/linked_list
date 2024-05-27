@@ -93,7 +93,7 @@ RSpec.describe LinkedList do
     end
 
     it 'returns the last defined node in a list' do
-      expect(list.find_tail.data).to eq("blap")
+      expect(list.send(:find_tail).data).to eq("blap")
     end
   end
 
@@ -199,14 +199,15 @@ RSpec.describe LinkedList do
       # 0 1 2
     end
     it 'returns the node at desired position' do
-      expect(list.find_node_at(0).data).to eq("a")
-      expect(list.find_node_at(1).data).to eq("b")
-      expect(list.find_node_at(2).data).to eq("c")
-      expect(list.find_node_at(3)).to be nil
+      # expect(list.send(:find_node_at, 0).data).to eq("first")
+      expect(list.send(:find_node_at, 0).data).to eq("a")
+      expect(list.send(:find_node_at, 1).data).to eq("b")
+      expect(list.send(:find_node_at, 2).data).to eq("c")
+      expect(list.send(:find_node_at, 3)).to be nil
     end
 
     it 'returns nil if position is beyond list' do
-      expect(list.find_node_at(4)).to be nil
+      expect(list.send(:find_node_at, 4)).to be nil
     end
   end
 end

@@ -32,21 +32,6 @@ class LinkedList
     end
   end
 
-  def find_node_at(position)
-    current = @head
-    (position).times do
-      return nil unless current.next_node
-      current = current.next_node
-    end
-    current
-  end
-
-  def find_tail
-    current = @head
-    current = current.next_node while current.next_node
-    current
-  end
-
   def count
     current = @head
     count = 0
@@ -65,5 +50,22 @@ class LinkedList
       current = current.next_node
     end
     data.join(" ")
+  end
+
+  private
+
+  def find_node_at(position)
+    current = @head
+    (position).times do
+      return nil unless current.next_node
+      current = current.next_node
+    end
+    current
+  end
+
+  def find_tail
+    current = @head
+    current = current.next_node while current.next_node
+    current
   end
 end
