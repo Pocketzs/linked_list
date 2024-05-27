@@ -23,13 +23,13 @@ class LinkedList
   def insert(position, data)
     return prepend(data) if position.zero?
     new_node = Node.new(data)
-    current = @head
-    (position-1).times do
-      break unless current.next_node
-      current = current.next_node
+    previous = find_node_at(position - 1)
+    if previous
+      new_node.next_node = previous.next_node
+      previous.next_node = new_node
+    else
+      append(data)
     end
-    new_node.next_node = current.next_node
-    current.next_node = new_node
   end
 
   def find_node_at(position)
