@@ -32,6 +32,15 @@ class LinkedList
     current.next_node = new_node
   end
 
+  def find_node_at(position)
+    current = @head
+    (position).times do
+      return nil unless current.next_node
+      current = current.next_node
+    end
+    current
+  end
+
   def find_tail
     current = @head
     current = current.next_node while current.next_node

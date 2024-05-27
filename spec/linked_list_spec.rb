@@ -189,4 +189,24 @@ RSpec.describe LinkedList do
       end
     end
   end
+
+  describe '#find_node_at' do
+    before do
+      list.append("a")
+      list.append("b")
+      list.append("c")
+      # a b c
+      # 0 1 2
+    end
+    it 'returns the node at desired position' do
+      expect(list.find_node_at(0).data).to eq("a")
+      expect(list.find_node_at(1).data).to eq("b")
+      expect(list.find_node_at(2).data).to eq("c")
+      expect(list.find_node_at(3)).to be nil
+    end
+
+    it 'returns nil if position is beyond list' do
+      expect(list.find_node_at(4)).to be nil
+    end
+  end
 end
