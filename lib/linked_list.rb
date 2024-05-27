@@ -21,6 +21,7 @@ class LinkedList
   end
 
   def insert(position, data)
+    return prepend(data) if position.zero?
     new_node = Node.new(data)
     current = @head
     (position-1).times do

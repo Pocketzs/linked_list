@@ -143,5 +143,21 @@ RSpec.describe LinkedList do
         expect(list.to_string).to eq("dop plop woo suu")
       end
     end
+
+    context 'when a node is inserted at position 0 in a list of 3 elements' do
+      before do
+        list.append("plop")
+        list.append("suu")
+        list.prepend("dop")
+        # dop plop suu
+        list.insert(0, "woo")
+        # woo dop plop suu
+      end
+
+      it 'prepends the node' do
+        expect(list.to_string).to eq("woo dop plop suu")
+      end
+    end
+    
   end
 end
