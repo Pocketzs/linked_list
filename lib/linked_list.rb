@@ -52,6 +52,11 @@ class LinkedList
     data.join(" ")
   end
 
+  def find(position, length)
+    elements = to_string.split
+    elements[position, length].join(" ")
+  end
+
   private
 
   def find_node_at(position)
