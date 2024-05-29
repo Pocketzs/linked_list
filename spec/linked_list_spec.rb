@@ -210,4 +210,22 @@ RSpec.describe LinkedList do
       expect(list.send(:find_node_at, 4)).to be nil
     end
   end
+
+  describe '#find' do
+    before do
+      list.append("deep")
+      list.append("woo")
+      list.append("shi")
+      list.append("shu")
+      list.append("blop")
+      # deep woo shi shu blop
+    end
+    it 'finds elements from position 2 with length 1' do
+      expect(list.find(2, 1)).to eq("shi")
+    end
+
+    it 'finds elements from position 1 with length 3' do
+      expect(list.find(1, 3)).to eq("woo shi shu")
+    end
+  end
 end
