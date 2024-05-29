@@ -53,8 +53,14 @@ class LinkedList
   end
 
   def find(position, length)
-    elements = to_string.split
-    elements[position, length].join(" ")
+    current = find_node_at(position)
+    data = []
+    length.times do
+      break unless current
+      data << current.data
+      current = current.next_node
+    end
+    data.join(" ")
   end
 
   private

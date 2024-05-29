@@ -227,5 +227,13 @@ RSpec.describe LinkedList do
     it 'finds elements from position 1 with length 3' do
       expect(list.find(1, 3)).to eq("woo shi shu")
     end
+
+    it 'returns max elements when length is longer than list' do
+      expect(list.find(2, 4)).to eq("shi shu blop")
+    end
+
+    it 'returns empty string if length is 0' do
+      expect(list.find(0, 0)).to eq("")
+    end
   end
 end
