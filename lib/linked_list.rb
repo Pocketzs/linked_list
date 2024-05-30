@@ -63,6 +63,30 @@ class LinkedList
     data.join(" ")
   end
 
+  def includes?(data)
+    current = @head
+    while current
+      return true if current.data == data
+      current = current.next_node
+    end
+    false
+  end
+
+  def pop
+    return nil unless @head
+
+    if @head.next_node.nil?
+      data = @head.data
+      @head = nil
+      return data
+    end
+
+    second_to_last_node = find_node_at(count - 2)
+    data = second_to_last_node.next_node.data
+    second_to_last_node.next_node = nil
+    data
+  end
+
   private
 
   def find_node_at(position)
