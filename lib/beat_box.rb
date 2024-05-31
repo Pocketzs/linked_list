@@ -1,14 +1,22 @@
 class BeatBox
   attr_reader :list
 
-  def initialize
+  VALID_BEATS = %w[tee dee deep bop boop la na doo ditt woo hoo shu].freeze
+
+  def initialize(data = nil)
     @list = LinkedList.new
+    append(data) if data
   end
 
   def append(data)
-    formatted = data.split
-    formatted.each do |data|
-      @list.append(data)
+    formatted(data).each do |data|
+      @list.append(data) if valid_beat?(data)
+    end
+  end
+
+  def prepend(data)
+    formatted(data).reverse.each do |data|
+      @list.prepend(data) if valid_beat?(data)
     end
   end
 
@@ -23,5 +31,16 @@ class BeatBox
   def play
     beats = all
     `say -r 500 -v Boing #{beats}`
+    puts "Playing: #{beats}"
+  end
+
+  private
+
+  def formatted(data)
+    data.split
+  end
+
+  def valid_beat?(beat)
+    VALID_BEATS.include?(beat)
   end
 end

@@ -46,6 +46,45 @@ RSpec.describe BeatBox do
 
   it 'can play the beatbox sound' do
     bb.append("deep doo ditt woo hoo shu")
-    expect(bb.play).to eq("")
+    expect { bb.play }.to output("Playing: deep doo ditt woo hoo shu\n").to_stdout
+  end
+
+  it 'can append valid data to the linked list' do
+    bb.append("deep Mississippi")
+    expect(bb.list.head.data).to eq("deep")
+    expect(bb.list.head.next_node).to be_nil
+  end
+
+  it 'ignores invalid data when appending' do
+    bb.append("deep Mississippi doo")
+    expect(bb.list.head.data).to eq("deep")
+    expect(bb.list.head.next_node.data).to eq("doo")
+  end
+
+  it 'can be initialized with data and will append the data' do
+    bb = BeatBox.new("deep doo ditt")
+
+    expect(bb).to be_a(BeatBox)
+    expect(bb.list.head.data).to eq("deep")
+    expect(bb.list.head.next_node.data).to eq("doo")
+    expect(bb.list.head.next_node.next_node.data).to eq("ditt")
+  end
+
+  it 'can prepend valid data to the linked list' do
+    bb.append("deep doo")
+    bb.prepend("tee dee")
+    expect(bb.list.head.data).to eq("tee")
+    expect(bb.list.head.next_node.data).to eq("dee")
+    expect(bb.list.head.next_node.next_node.data).to eq("deep")
+    expect(bb.list.head.next_node.next_node.next_node.data).to eq("doo")
+  end
+
+  it 'ignores invalid data when prepending' do
+    bb.append("deep doo")
+    bb.prepend("tee Mississippi dee")
+    expect(bb.list.head.data).to eq("tee")
+    expect(bb.list.head.next_node.data).to eq("dee")
+    expect(bb.list.head.next_node.next_node.data).to eq("deep")
+    expect(bb.list.head.next_node.next_node.next_node.data).to eq("doo")
   end
 end
