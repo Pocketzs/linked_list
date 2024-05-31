@@ -41,6 +41,11 @@ RSpec.describe BeatBox do
   it 'can convert the linked list to a string' do
     bb.append("deep doo ditt")
     bb.append("woo hoo shu")
-    expect(bb.to_string).to eq("deep doo ditt woo hoo shu")
+    expect(bb.all).to eq("deep doo ditt woo hoo shu")
+  end
+
+  it 'can play the beatbox sound' do
+    bb.append("deep doo ditt woo hoo shu")
+    expect(bb.play).to eq("")
   end
 end
